@@ -22,5 +22,14 @@ class Gedung(Base):
     id = Column(Integer, primary_key = True, index = True)
     kd_gedung = Column(String(10))
     nama_gedung = Column(String(100))
+    gedungs = relationship("Ruangan", back_populates = "ruangans")
 
-
+# Models untuk Master Ruangan
+class Ruangan(Base):
+    __tablename__ = 'master_ruangan'
+    id = Column(Integer, primary_key = True, index = True)
+    kd_ruangan = Column(String(10))
+    nama_ruangan = Column(String(100))
+    jml_kapasitas = Column(Integer)
+    id_gedung = Column(Integer, ForeignKey('master_gedung.id'))
+    ruangans = relationship("Gedung", back_populates = "gedungs")

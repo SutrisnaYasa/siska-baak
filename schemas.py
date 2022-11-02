@@ -51,3 +51,23 @@ class ShowGedung(BaseModel):
     class Config():
         orm_mode = True
 # End Schemas Master Gedung
+
+# Schemas Untuk Master Ruangan
+class RuanganBase(BaseModel):
+    kd_ruangan: str
+    nama_ruangan: str
+    jml_kapasitas: int
+    id_gedung: int
+
+class Ruangan(RuanganBase):
+    class Config():
+        orm_mode = True
+
+class ShowRuangan(BaseModel):
+    kd_ruangan: str
+    nama_ruangan: str
+    jml_kapasitas: int
+    id_gedung: int
+
+    class Config():
+        orm_mode = True

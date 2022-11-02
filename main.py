@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import models
 from database import engine
-from routers import agama, kelas, gedung
+from routers import agama, kelas, gedung, ruangan
 
 app = FastAPI()
 
@@ -10,3 +10,4 @@ models.Base.metadata.create_all(engine)
 app.include_router(agama.router)
 app.include_router(kelas.router)
 app.include_router(gedung.router)
+app.include_router(ruangan.router)
