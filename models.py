@@ -15,3 +15,12 @@ class Kelas(Base):
     id = Column(Integer, primary_key = True, index = True)
     kd_kelas = Column(String(10))
     nama_kelas = Column(String(100))
+
+# Models untuk Master Gedung
+class Gedung(Base):
+    __tablename__ = 'master_gedung'
+    id = Column(Integer, primary_key = True, index = True)
+    kd_gedung = Column(String(10))
+    nama_gedung = Column(String(100))
+
+

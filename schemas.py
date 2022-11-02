@@ -34,3 +34,20 @@ class ShowKelas(BaseModel):
     class Config():
         orm_mode = True
 # End Schemas Master Kelas
+
+# Schemas Untuk Master Gedung
+class GedungBase(BaseModel):
+    kd_gedung: str
+    nama_gedung: str
+
+class Gedung(GedungBase):
+    class Config():
+        orm_mode = True
+
+class ShowGedung(BaseModel):
+    kd_gedung: str
+    nama_gedung: str
+
+    class Config():
+        orm_mode = True
+# End Schemas Master Gedung
