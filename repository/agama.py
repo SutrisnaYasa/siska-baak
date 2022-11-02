@@ -13,13 +13,13 @@ def create(request: schemas.Agama, db: Session):
     db.refresh(new_agama)
     return new_agama
 
-def destroy(id:int, db: Session):
+def destroy(id: int, db: Session):
     agama = db.query(models.Agama).filter(models.Agama.id == id)
     if not agama.first():
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = f"Agama dengan id {id} tidak ditemukan")
     agama.delete(synchronize_session = False)
     db.commit()
-    return 'Data Berhasil di Hapus'
+    return 'Data Agama Berhasil di Hapus'
 
 def update(id: int, request: schemas.Agama, db: Session):
     agama = db.query(models.Agama).filter(models.Agama.id == id)
