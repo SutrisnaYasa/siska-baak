@@ -117,3 +117,18 @@ class ShowGrade(BaseModel):
         orm_mode = True
 
 # End Schemas Master Grade
+
+# Schemas Untuk Master Fakultas
+class FakultasBase(BaseModel):
+    nama_fakultas: str
+
+class Fakultas(FakultasBase):
+    class Config():
+        orm_mode = True
+
+class ShowFakultas(BaseModel):
+    id_fakultas : int
+    nama_fakultas: str
+
+    class Config():
+        orm_mode = True
