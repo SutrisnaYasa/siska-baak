@@ -57,3 +57,13 @@ class Fakultas(Base):
     __tablename__ = 'master_fakultas'
     id_fakultas = Column(Integer, primary_key = True, index = True)
     nama_fakultas = Column(String(100))
+    fakultass = relationship("Prodi", back_populates = "prodis")
+
+# Models untuk Master Prodi
+class Prodi(Base):
+    __tablename__ = 'master_prodi'
+    id_prodi = Column(Integer, primary_key = True, index = True)
+    kode_prodi = Column(String(10))
+    nama_prodi = Column(String(100))
+    fakultasID = Column(Integer, ForeignKey('master_fakultas.id_fakultas'))
+    prodis = relationship("Fakultas", back_populates = "fakultass")

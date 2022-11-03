@@ -67,7 +67,7 @@ class ShowRuangan(BaseModel):
     kd_ruangan: str
     nama_ruangan: str
     jml_kapasitas: int
-    id_gedung: int
+    ruangans: ShowGedung
 
     class Config():
         orm_mode = True
@@ -129,6 +129,27 @@ class Fakultas(FakultasBase):
 class ShowFakultas(BaseModel):
     id_fakultas : int
     nama_fakultas: str
+
+    class Config():
+        orm_mode = True
+
+# End Schemas Master Fakultas
+
+# Schemas Untuk Master Prodi
+class ProdiBase(BaseModel):
+    kode_prodi: str
+    nama_prodi: str
+    fakultasID: int
+
+class Prodi(ProdiBase):
+    class Config():
+        orm_mode = True
+
+class ShowProdi(BaseModel):
+    id_prodi: int
+    kode_prodi: str
+    nama_prodi: str
+    prodis: ShowFakultas
 
     class Config():
         orm_mode = True
