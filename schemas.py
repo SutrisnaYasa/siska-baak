@@ -71,3 +71,26 @@ class ShowRuangan(BaseModel):
 
     class Config():
         orm_mode = True
+# End Schemas Master Ruangan
+
+# Schemas Untuk Master Penilaian
+class PenilaianBase(BaseModel):
+    nama_nilai: str
+    per_min: int
+    per_max: int
+    status_penilaian: str
+
+class Penilaian(PenilaianBase):
+    class Config():
+        orm_mode = True
+
+class ShowPenilaian(BaseModel):
+    id_nilai: int
+    nama_nilai: str
+    per_min: int
+    per_max: int
+    status_penilaian: str
+
+    class Config():
+        orm_mode = True
+# End Schemas Master Penilaian

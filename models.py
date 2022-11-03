@@ -33,3 +33,12 @@ class Ruangan(Base):
     jml_kapasitas = Column(Integer)
     id_gedung = Column(Integer, ForeignKey('master_gedung.id'))
     ruangans = relationship("Gedung", back_populates = "gedungs")
+
+# Models untuk Master Penilaian
+class Penilaian(Base):
+    __tablename__ = 'master_penilaian'
+    id_nilai = Column(Integer, primary_key = True, index = True)
+    nama_nilai = Column(String(100))
+    per_min = Column(Integer)
+    per_max = Column(Integer)
+    status_penilaian = Column(String(100))
