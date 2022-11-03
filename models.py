@@ -67,3 +67,12 @@ class Prodi(Base):
     nama_prodi = Column(String(100))
     fakultasID = Column(Integer, ForeignKey('master_fakultas.id_fakultas'))
     prodis = relationship("Fakultas", back_populates = "fakultass")
+
+# Models untuk Master Tahun Kurikulum
+class Kurikulum(Base):
+    __tablename__ = 'master_kurikulum'
+    id_kurikulum = Column(Integer, primary_key = True, index = True)
+    thn_kurikulum  = Column(String(50))
+    stts_kurikulum = Column(String(50))
+    keterangan = Column(String(100))
+    

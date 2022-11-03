@@ -153,3 +153,24 @@ class ShowProdi(BaseModel):
 
     class Config():
         orm_mode = True
+
+# End Schemas Master Prodi
+
+# Schemas Untuk Master Kurikulum
+class KurikulumBase(BaseModel):
+    thn_kurikulum: str
+    stts_kurikulum: str
+    keterangan: str
+
+class Kurikulum(KurikulumBase):
+    class Config():
+        orm_mode = True
+
+class ShowKurikulum(BaseModel):
+    id_kurikulum: int
+    thn_kurikulum: str
+    stts_kurikulum: str
+    keterangan: str
+
+    class Config():
+        orm_mode = True
