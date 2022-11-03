@@ -75,4 +75,12 @@ class Kurikulum(Base):
     thn_kurikulum  = Column(String(50))
     stts_kurikulum = Column(String(50))
     keterangan = Column(String(100))
-    
+    kurikulums = relationship("AngkatanKurikulum", back_populates = "angkatankrkm")
+
+# Models untuk Master Angkatan Kurikulum
+class AngkatanKurikulum(Base):
+    __tablename__ = 'master_angkatan_kurikulum'
+    id_angkatan_krk = Column(Integer, primary_key = True, index = True)
+    angkatan_krk = Column(String(20))
+    kurikulumThn = Column(Integer, ForeignKey('master_kurikulum.id_kurikulum'))
+    angkatankrkm = relationship("Kurikulum", back_populates = "kurikulums") 

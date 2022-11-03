@@ -174,3 +174,25 @@ class ShowKurikulum(BaseModel):
 
     class Config():
         orm_mode = True
+
+# End Schemas Master Kurikulum
+
+# Schemas Untuk Master Angkatan Kurikulum
+class AngkatanKurikulumBase(BaseModel):
+    angkatan_krk: str
+    kurikulumThn: int
+
+class AngkatanKurikulum(AngkatanKurikulumBase):
+    class Config():
+        orm_mode = True
+
+class ShowAngkatanKurikulum(BaseModel):
+    id_angkatan_krk: int
+    angkatan_krk: str
+    angkatankrkm : ShowKurikulum
+
+    class Config():
+        orm_mode = True
+
+# End Schemas Master Angkatan Kurikulum
+
