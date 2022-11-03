@@ -196,3 +196,22 @@ class ShowAngkatanKurikulum(BaseModel):
 
 # End Schemas Master Angkatan Kurikulum
 
+# Schemas Untuk Master Matakuliah
+class MatakuliahBase(BaseModel):
+    kode_mk: str
+    nama_makul: str
+    deskripsi: str
+
+class Matakuliah(MatakuliahBase):
+    class Config():
+        orm_mode = True
+
+class ShowMatakuliah(BaseModel):
+    kode_mk: str
+    nama_makul: str
+    deskripsi: str
+
+    class Config():
+        orm_mode = True
+
+# End Schemas Master Matakuliah

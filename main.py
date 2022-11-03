@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import models
 from database import engine
-from routers import agama, kelas, gedung, ruangan, penilaian, grade, fakultas, prodi, kurikulum, angkatankurikulum
+from routers import agama, kelas, gedung, ruangan, penilaian, grade, fakultas, prodi, kurikulum, angkatankurikulum, matakuliah
 
 app = FastAPI()
 
@@ -17,3 +17,4 @@ app.include_router(fakultas.router)
 app.include_router(prodi.router)
 app.include_router(kurikulum.router)
 app.include_router(angkatankurikulum.router)
+app.include_router(matakuliah.router)
