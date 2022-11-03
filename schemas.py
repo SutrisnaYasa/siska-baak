@@ -94,3 +94,26 @@ class ShowPenilaian(BaseModel):
     class Config():
         orm_mode = True
 # End Schemas Master Penilaian
+
+# Schemas Untuk Master Grade
+class GradeBase(BaseModel):
+    batas_bawah: float
+    batas_atas: float
+    nilai_huruf: str
+    bobot: float
+
+class Grade(GradeBase):
+    class Config():
+        orm_mode = True
+
+class ShowGrade(BaseModel):
+    id_grade: int
+    batas_bawah: float
+    batas_atas: float
+    nilai_huruf: str
+    bobot: float
+
+    class Config():
+        orm_mode = True
+
+# End Schemas Master Grade

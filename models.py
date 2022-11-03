@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Float
 from database import Base
 from sqlalchemy.orm import relationship
 
@@ -42,3 +42,12 @@ class Penilaian(Base):
     per_min = Column(Integer)
     per_max = Column(Integer)
     status_penilaian = Column(String(100))
+
+# Models untuk Master Grade
+class Grade(Base):
+    __tablename__ = 'master_grade'
+    id_grade = Column(Integer, primary_key = True, index = True)
+    batas_bawah = Column(Float)
+    batas_atas = Column(Float)
+    nilai_huruf = Column(String(10))
+    bobot = Column(Float)
