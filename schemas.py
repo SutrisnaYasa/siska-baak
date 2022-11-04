@@ -234,3 +234,22 @@ class ShowMkkelas(BaseModel):
 
 # End Schemas Master Matakuliah Kelas
 
+# Schemas Untuk Master Matakuliah Syarat
+class MksyaratBase(BaseModel):
+    kode_mk: str
+    kd_mk_syarat_and: str
+    kd_mk_syarat_or: str
+
+class Mksyarat(MksyaratBase):
+    class Config():
+        orm_mode = True
+
+class ShowMksyarat(BaseModel):
+    syarats: ShowMatakuliah
+    kd_mk_syarat_and: str
+    kd_mk_syarat_or: str
+
+    class Config():
+        orm_mode = True
+
+# End Schemas Master Matakuliah Syarat

@@ -92,6 +92,7 @@ class Matakuliah(Base):
     kode_mk = Column(String(10))
     nama_makul = Column(String(100))
     deskripsi = Column(String(100))
+    makuls = relationship("Mksyarat", back_populates = "syarats")
 
 # Models untuk Master Matakuliah Kelas
 class Mkkelas(Base):
@@ -99,3 +100,12 @@ class Mkkelas(Base):
     id_mk_kelas = Column(Integer, primary_key = True, index = True)
     kode_kelas_mk = Column(String(10))
     nm_kelas_mk = Column(String(100))
+
+# Models untuk Master Matakuliah Syarat
+class Mksyarat(Base):
+    __tablename__ = 'master_mk_syarat'
+    id_mk_syarat = Column(Integer, primary_key = True, index = True)
+    kode_mk = Column(Integer, ForeignKey('master_matakuliah.id_makul'))
+    kd_mk_syarat_and = Column(String(100))
+    kd_mk_syarat_or = Column(String(100))
+    syarats = relationship("Matakuliah", back_populates = "makuls")
