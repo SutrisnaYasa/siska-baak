@@ -93,3 +93,9 @@ class Matakuliah(Base):
     nama_makul = Column(String(100))
     deskripsi = Column(String(100))
 
+# Models untuk Master Matakuliah Kelas
+class Mkkelas(Base):
+    __tablename__ = 'master_mkkelas'
+    id_mk_kelas = Column(Integer, primary_key = True, index = True)
+    kode_kelas_mk = Column(String(10))
+    nm_kelas_mk = Column(String(100))

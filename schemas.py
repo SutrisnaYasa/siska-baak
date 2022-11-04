@@ -215,3 +215,22 @@ class ShowMatakuliah(BaseModel):
         orm_mode = True
 
 # End Schemas Master Matakuliah
+
+# Schemas Untuk Master Matakuliah Kelas
+class MkkelasBase(BaseModel):
+    kode_kelas_mk: str
+    nm_kelas_mk: str
+
+class Mkkelas(MkkelasBase):
+    class Config():
+        orm_mode = True
+
+class ShowMkkelas(BaseModel):
+    kode_kelas_mk: str
+    nm_kelas_mk: str
+
+    class Config():
+        orm_mode = True
+
+# End Schemas Master Matakuliah Kelas
+
