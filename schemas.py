@@ -253,3 +253,26 @@ class ShowMksyarat(BaseModel):
         orm_mode = True
 
 # End Schemas Master Matakuliah Syarat
+
+# Schemas Untuk Master Kelompok Matakuliah
+class KelompokmkBase(BaseModel):
+    kode_klp: str
+    nm_klp_mk: str
+    koordinator: str
+    matkul: str
+
+class Kelompokmk(KelompokmkBase):
+    class Config():
+        orm_mode = True
+
+class ShowKelompokmk(BaseModel):
+    kode_klp: str
+    nm_klp_mk: str
+    koordinator: str
+    matkul: str
+
+    class Config():
+        orm_mode = True
+
+# End Schemas Master Kelompok Matakuliah
+

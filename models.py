@@ -109,3 +109,12 @@ class Mksyarat(Base):
     kd_mk_syarat_and = Column(String(100))
     kd_mk_syarat_or = Column(String(100))
     syarats = relationship("Matakuliah", back_populates = "makuls")
+
+#Models untuk Master Kelompok Matakuliah
+class Kelompokmk(Base):
+    __tablename__ = 'master_klp_mk'
+    id_klp_mk = Column(Integer, primary_key = True, index = True)
+    kode_klp = Column(String(100))
+    nm_klp_mk = Column(String(100))
+    koordinator = Column(String(100))
+    matkul = Column(String(100))
