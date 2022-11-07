@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Float
+from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime
 from database import Base
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 
 # Models Untuk Users
 class User(Base):
@@ -9,6 +10,8 @@ class User(Base):
     id = Column(Integer, primary_key = True, index = True)
     username = Column(String(100))
     password = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
 # Models untuk Master Agama
 class Agama(Base):
@@ -16,6 +19,8 @@ class Agama(Base):
     id = Column(Integer, primary_key = True, index = True)
     kd_agama = Column(String(10))
     nama_agama = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
 # Models untuk Master Kelas
 class Kelas(Base):
@@ -23,6 +28,8 @@ class Kelas(Base):
     id = Column(Integer, primary_key = True, index = True)
     kd_kelas = Column(String(10))
     nama_kelas = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
 # Models untuk Master Gedung
 class Gedung(Base):
@@ -30,6 +37,8 @@ class Gedung(Base):
     id = Column(Integer, primary_key = True, index = True)
     kd_gedung = Column(String(10))
     nama_gedung = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     gedungs = relationship("Ruangan", back_populates = "ruangans")
 
 # Models untuk Master Ruangan
@@ -40,6 +49,8 @@ class Ruangan(Base):
     nama_ruangan = Column(String(100))
     jml_kapasitas = Column(Integer)
     id_gedung = Column(Integer, ForeignKey('master_gedung.id'))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     ruangans = relationship("Gedung", back_populates = "gedungs")
 
 # Models untuk Master Penilaian
@@ -50,6 +61,8 @@ class Penilaian(Base):
     per_min = Column(Integer)
     per_max = Column(Integer)
     status_penilaian = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
 # Models untuk Master Grade
 class Grade(Base):
@@ -59,12 +72,16 @@ class Grade(Base):
     batas_atas = Column(Float)
     nilai_huruf = Column(String(10))
     bobot = Column(Float)
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
 # Models untuk Master Fakultas
 class Fakultas(Base):
     __tablename__ = 'master_fakultas'
     id_fakultas = Column(Integer, primary_key = True, index = True)
     nama_fakultas = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     fakultass = relationship("Prodi", back_populates = "prodis")
 
 # Models untuk Master Prodi
@@ -74,6 +91,8 @@ class Prodi(Base):
     kode_prodi = Column(String(10))
     nama_prodi = Column(String(100))
     fakultasID = Column(Integer, ForeignKey('master_fakultas.id_fakultas'))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     prodis = relationship("Fakultas", back_populates = "fakultass")
 
 # Models untuk Master Tahun Kurikulum
@@ -83,6 +102,8 @@ class Kurikulum(Base):
     thn_kurikulum  = Column(String(50))
     stts_kurikulum = Column(String(50))
     keterangan = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     kurikulums = relationship("AngkatanKurikulum", back_populates = "angkatankrkm")
 
 # Models untuk Master Angkatan Kurikulum
@@ -91,7 +112,9 @@ class AngkatanKurikulum(Base):
     id_angkatan_krk = Column(Integer, primary_key = True, index = True)
     angkatan_krk = Column(String(20))
     kurikulumThn = Column(Integer, ForeignKey('master_kurikulum.id_kurikulum'))
-    angkatankrkm = relationship("Kurikulum", back_populates = "kurikulums") 
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
+    angkatankrkm = relationship("Kurikulum", back_populates = "kurikulums")
 
 # Models untuk Master Matakuliah
 class Matakuliah(Base):
@@ -100,6 +123,8 @@ class Matakuliah(Base):
     kode_mk = Column(String(10))
     nama_makul = Column(String(100))
     deskripsi = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     makuls = relationship("Mksyarat", back_populates = "syarats")
 
 # Models untuk Master Matakuliah Kelas
@@ -108,6 +133,8 @@ class Mkkelas(Base):
     id_mk_kelas = Column(Integer, primary_key = True, index = True)
     kode_kelas_mk = Column(String(10))
     nm_kelas_mk = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
 # Models untuk Master Matakuliah Syarat
 class Mksyarat(Base):
@@ -116,6 +143,8 @@ class Mksyarat(Base):
     kode_mk = Column(Integer, ForeignKey('master_matakuliah.id_makul'))
     kd_mk_syarat_and = Column(String(100))
     kd_mk_syarat_or = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     syarats = relationship("Matakuliah", back_populates = "makuls")
 
 #Models untuk Master Kelompok Matakuliah
@@ -126,3 +155,5 @@ class Kelompokmk(Base):
     nm_klp_mk = Column(String(100))
     koordinator = Column(String(100))
     matkul = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())

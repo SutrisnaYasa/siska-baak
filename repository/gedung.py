@@ -27,7 +27,7 @@ def update(id: int, request: schemas.Gedung, db: Session):
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND, detail = f"Geudng dengan id {id} tidak ditemukan")
     gedung.update(request.dict())
     db.commit()
-    return 'Data Gedung Berhasil dihapus'
+    return 'Data Gedung Berhasil di Update'
 
 def show(id: int, db: Session):
     gedung = db.query(models.Gedung).filter(models.Gedung.id == id).first()
