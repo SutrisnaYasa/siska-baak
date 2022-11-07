@@ -94,6 +94,7 @@ class Prodi(Base):
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     prodis = relationship("Fakultas", back_populates = "fakultass")
+    mkd_prodis = relationship("Mkdetail", back_populates = "mkd_prodi")
 
 # Models untuk Master Tahun Kurikulum
 class Kurikulum(Base):
@@ -105,6 +106,7 @@ class Kurikulum(Base):
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     kurikulums = relationship("AngkatanKurikulum", back_populates = "angkatankrkm")
+    mkd_thn_kurikulums = relationship("Mkdetail", back_populates = "mkd_thn_kurikulum")
 
 # Models untuk Master Angkatan Kurikulum
 class AngkatanKurikulum(Base):
@@ -126,6 +128,7 @@ class Matakuliah(Base):
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
     makuls = relationship("Mksyarat", back_populates = "syarats")
+    mkd_kode_mks = relationship("Mkdetail", back_populates = "mkd_kode_mk")
 
 # Models untuk Master Matakuliah Kelas
 class Mkkelas(Base):
@@ -157,3 +160,25 @@ class Kelompokmk(Base):
     matkul = Column(String(100))
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
+    mkd_klp_mks = relationship("Mkdetail", back_populates = "mkd_klp_mk")
+
+# Models Untuk Master Matakuliah Detail
+class Mkdetail(Base):
+    __tablename__ = 'master_mk_detail'
+    id_mk_detail= Column(Integer, primary_key = True, index = True)
+    kode_mk = Column(Integer, ForeignKey('master_matakuliah.id_makul'))
+    course = Column(String(100))
+    klp_mk = Column(Integer, ForeignKey('master_klp_mk.id_klp_mk'))
+    prodi = Column(Integer, ForeignKey('master_prodi.id_prodi'))
+    sks = Column(String(10))
+    semester = Column(String(10))
+    thn_kurikulum = Column(Integer, ForeignKey('master_kurikulum.id_kurikulum'))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
+    mkd_kode_mk = relationship("Matakuliah", back_populates = "mkd_kode_mks")
+    mkd_klp_mk = relationship("Kelompokmk", back_populates = "mkd_klp_mks")
+    mkd_prodi = relationship("Prodi", back_populates = "mkd_prodis")
+    mkd_thn_kurikulum = relationship("Kurikulum", back_populates = "mkd_thn_kurikulums")
+
+
+

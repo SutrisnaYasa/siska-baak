@@ -140,7 +140,6 @@ class ShowGrade(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Grade
 
 # Schemas Untuk Master Fakultas
@@ -157,7 +156,6 @@ class ShowFakultas(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Fakultas
 
 # Schemas Untuk Master Prodi
@@ -178,7 +176,6 @@ class ShowProdi(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Prodi
 
 # Schemas Untuk Master Kurikulum
@@ -199,7 +196,6 @@ class ShowKurikulum(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Kurikulum
 
 # Schemas Untuk Master Angkatan Kurikulum
@@ -218,7 +214,6 @@ class ShowAngkatanKurikulum(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Angkatan Kurikulum
 
 # Schemas Untuk Master Matakuliah
@@ -238,7 +233,6 @@ class ShowMatakuliah(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Matakuliah
 
 # Schemas Untuk Master Matakuliah Kelas
@@ -256,7 +250,6 @@ class ShowMkkelas(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Matakuliah Kelas
 
 # Schemas Untuk Master Matakuliah Syarat
@@ -276,7 +269,6 @@ class ShowMksyarat(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Matakuliah Syarat
 
 # Schemas Untuk Master Kelompok Matakuliah
@@ -298,6 +290,31 @@ class ShowKelompokmk(BaseModel):
 
     class Config():
         orm_mode = True
-
 # End Schemas Master Kelompok Matakuliah
 
+# Schemas Untuk Master Matakuliah Detail
+class MkdetailBase(BaseModel):
+    kode_mk: int
+    course: str
+    klp_mk: int
+    prodi: int
+    sks: str
+    semester: str
+    thn_kurikulum: int
+
+class Mkdetail(MkdetailBase):
+    class Config():
+        orm_mode = True
+
+class ShowMkdetail(BaseModel):
+    mkd_kode_mk: ShowMatakuliah
+    course: str
+    mkd_klp_mk: ShowKelompokmk
+    mkd_prodi: ShowProdi
+    sks: int
+    semester: int
+    mkd_thn_kurikulum: ShowKurikulum
+
+    class Config():
+        orm_mode = True
+# End Schemas Untuk Master Matakuliah Detail
