@@ -2,6 +2,14 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Float
 from database import Base
 from sqlalchemy.orm import relationship
 
+# Models Untuk Users
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key = True, index = True)
+    username = Column(String(100))
+    password = Column(String(100))
+
 # Models untuk Master Agama
 class Agama(Base):
     __tablename__ = 'master_agama'

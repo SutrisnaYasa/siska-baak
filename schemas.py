@@ -1,6 +1,31 @@
 from typing import List, Optional
 from pydantic import BaseModel
 
+# Schemas Untuk Users
+class User(BaseModel):
+    username: str
+    password: str
+
+class ShowUser(BaseModel):
+    username: str
+
+    class Config():
+        orm_mode = True
+# End Schemas Untuk User
+
+# Schemas Untuk Login
+class Login(BaseModel):
+    username: str
+    password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+# End Schemas Untuk Login
+
 # Schemas Untuk Master Agama
 class AgamaBase(BaseModel):
     kd_agama: str
