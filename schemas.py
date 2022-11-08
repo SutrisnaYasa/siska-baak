@@ -369,3 +369,21 @@ class ShowKabupaten(BaseModel):
     class Config():
         orm_mode = True
 # End Schemas Master Kabupaten 
+
+# Schemas Untuk Master Kecamatan
+class KecamatanBase(BaseModel):
+    nama_kecamatan: str
+
+class Kecamatan(KecamatanBase):
+    class Config():
+        orm_mode = True
+
+class ShowKecamatan(BaseModel):
+    id_kecamatan: int
+    nama_kecamatan: str
+    
+    class Config():
+        orm_mode = True
+# End Schemas Master Kecamatan
+
+

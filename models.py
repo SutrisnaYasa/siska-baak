@@ -205,3 +205,11 @@ class Kabupaten(Base):
     nama_kabupaten = Column(String(100))
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
+
+# Models Untuk Master Kecamatan
+class Kecamatan(Base):
+    __tablename__ = 'master_kecamatan'
+    id_kecamatan = Column(Integer, primary_key = True, index = True)
+    nama_kecamatan = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
