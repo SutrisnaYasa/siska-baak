@@ -353,3 +353,19 @@ class ShowProvinsi(BaseModel):
     class Config():
         orm_mode = True
 # End Schemas Master Provinsi
+
+# Schemas Untuk Master Kabupaten
+class KabupatenBase(BaseModel):
+    nama_kabupaten: str
+
+class Kabupaten(KabupatenBase):
+    class Config():
+        orm_mode = True
+
+class ShowKabupaten(BaseModel):
+    id_kabupaten: int
+    nama_kabupaten: str
+
+    class Config():
+        orm_mode = True
+# End Schemas Master Kabupaten 

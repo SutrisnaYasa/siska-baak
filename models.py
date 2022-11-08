@@ -198,4 +198,10 @@ class Provinsi(Base):
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
-
+# Models Untuk Master Kabupaten
+class Kabupaten(Base):
+    __tablename__ = 'master_kabupaten'
+    id_kabupaten = Column(Integer, primary_key = True, index = True)
+    nama_kabupaten = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
