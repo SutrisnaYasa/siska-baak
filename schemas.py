@@ -337,3 +337,19 @@ class ShowNegara(BaseModel):
     class Config():
         orm_mode = True
 # End Schemas Master Negara
+
+# Schemas Untuk Master Provinsi
+class ProvinsiBase(BaseModel):
+    nama_provinsi: str
+
+class Provinsi(ProvinsiBase):
+    class Config():
+        orm_mode = True
+
+class ShowProvinsi(BaseModel):
+    id_provinsi: int
+    nama_provinsi: str
+
+    class Config():
+        orm_mode = True
+# End Schemas Master Provinsi

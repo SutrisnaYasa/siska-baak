@@ -186,9 +186,16 @@ class Mkdetail(Base):
 class Negara(Base):
     __tablename__ = 'master_negara'
     id_negara = Column(Integer, primary_key = True, index = True)
-    nama_negara = Column(String(10))
+    nama_negara = Column(String(100))
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
+# Models Untuk Master Provinsi
+class Provinsi(Base):
+    __tablename__ = 'master_provinsi'
+    id_provinsi = Column(Integer, primary_key = True, index = True)
+    nama_provinsi = Column(String(100))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
 
