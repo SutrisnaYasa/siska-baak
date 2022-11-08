@@ -181,4 +181,14 @@ class Mkdetail(Base):
     mkd_thn_kurikulum = relationship("Kurikulum", back_populates = "mkd_thn_kurikulums")
 
 
+# Master Daerah
+# Models Untuk Master Negara
+class Negara(Base):
+    __tablename__ = 'master_negara'
+    id_negara = Column(Integer, primary_key = True, index = True)
+    nama_negara = Column(String(10))
+    created_at = Column(DateTime(timezone = True), server_default = func.now())
+    updated_at = Column(DateTime(timezone = True), onupdate = func.now())
+
+
 

@@ -318,3 +318,22 @@ class ShowMkdetail(BaseModel):
     class Config():
         orm_mode = True
 # End Schemas Untuk Master Matakuliah Detail
+
+
+
+# Master Daerah
+# Schemas Untuk Master Negara
+class NegaraBase(BaseModel):
+    nama_negara: str
+
+class Negara(NegaraBase):
+    class Config():
+        orm_mode = True
+
+class ShowNegara(BaseModel):
+    id_negara: int
+    nama_negara: str
+
+    class Config():
+        orm_mode = True
+# End Schemas Master Negara
