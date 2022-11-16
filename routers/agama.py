@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter, Depends, status, HTTPException
-import schemas, database, models, oauth2
+import schemas, database, models, auth
 from sqlalchemy.orm import Session
 from repository import agama
 
@@ -11,7 +11,7 @@ router = APIRouter(
 get_db = database.get_db
 
 @router.get('/', response_model = List[schemas.ShowAgama], status_code = status.HTTP_200_OK)
-def all(db: Session = Depends(get_db), current_user: schemas.User = Depends(oauth2.get_current_user)):
+def all(db: Session = Depends(get_db)):
     return agama.get_all(db)
 
 @router.post('/', status_code = status.HTTP_201_CREATED)

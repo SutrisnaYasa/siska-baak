@@ -1,13 +1,24 @@
+from enum import Enum
 from typing import List, Optional
 from pydantic import BaseModel
+
+# Membuat Pilihan Untuk Role
+class Roles(str, Enum):
+    user = "user",
+    admin = "admin"
 
 # Schemas Untuk Users
 class User(BaseModel):
     username: str
     password: str
+    role: Roles
+    is_active: bool = True
+
 
 class ShowUser(BaseModel):
     username: str
+    is_active: bool = True
+    role: Roles
 
     class Config():
         orm_mode = True

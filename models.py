@@ -1,7 +1,8 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime, Boolean, Enum
 from database import Base
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
+import enum
 
 # Models Untuk Users
 class User(Base):
@@ -10,6 +11,8 @@ class User(Base):
     id = Column(Integer, primary_key = True, index = True)
     username = Column(String(100))
     password = Column(String(100))
+    is_active = Column(Boolean, default = True)
+    role = Column(String(100), nullable = False)
     created_at = Column(DateTime(timezone = True), server_default = func.now())
     updated_at = Column(DateTime(timezone = True), onupdate = func.now())
 
