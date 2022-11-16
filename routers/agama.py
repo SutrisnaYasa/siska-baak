@@ -11,7 +11,7 @@ router = APIRouter(
 get_db = database.get_db
 
 @router.get('/', response_model = List[schemas.ShowAgama], status_code = status.HTTP_200_OK)
-def all(db: Session = Depends(get_db)):
+def all(db: Session = Depends(get_db), active: bool = Depends(auth.check_admin)):
     return agama.get_all(db)
 
 @router.post('/', status_code = status.HTTP_201_CREATED)
